@@ -1,0 +1,23 @@
+<!-- test.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Example For Semantic Parsing Of Temporal Utterances</title>
+</head>
+<body>
+    <h1>Try this out!</h1>
+    <form method="post">
+        <label>Utterance</label>
+        <input name="utterance"/>
+        <label>Reference Date</label>
+        <input name="today"/>
+        <button name="submit" type="submit">Submit</button>
+    </form>
+    {% if result %}
+        <ul>
+            <li>Input: {{request.form["utterance"]}}</li>
+            <li>Reference Date: {{request.form["today"]}}</li>
+            <li>Result: {{result}}</li>
+        </ul>
+    {% endif %}
+</body>

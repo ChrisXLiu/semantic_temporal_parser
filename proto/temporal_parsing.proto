@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+enum TemporalParsingStatus {
+    UNRECOGNIZED = 0;
+    SUCCEEDED = 1;
+    SERVER_ERROR = 2;
+}
+
+message TemporalParsingRequest {
+    // Free form string related to temporal date / time.
+    string utterance = 1;
+    // In the form of "YYYY-MM-DD". Server time will be used as a fallback.
+    string today = 2;
+}
+
+message TemporalParsingResponse {
+    TemporalParsingStatus status = 1;
+    // Undetermined value if status != SUCCEEDED.
+    string result = 2;
+}
+
+service TemporalParsing {
+    rpc Parse (TemporalParsingRequest) returns (TemporalParsingResponse);
+}
