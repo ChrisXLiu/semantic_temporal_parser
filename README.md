@@ -1,9 +1,5 @@
-Prerequisite: Retrieve and store OpenAI API KEY in `.env` file.
+To play with it:
 
-Program entry point: `semantic_parser.py`
-
-Key Abstractions:
-- `IParser`:
-  `parse(today: str, utterance: str) -> str|None`
-- `IStrategy`:
-  `run(today: str, utterance: str, parsers: List<IParser>) -> str|None`
+- `cd server && python temporal_parsing.py`
+- `cd client && FLASK_APP=client.py flask run`
+- Visit http://127.0.0.1:5000
