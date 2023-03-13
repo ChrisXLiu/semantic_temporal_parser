@@ -132,6 +132,14 @@ class TestParsingService(unittest.TestCase):
         self.assertEqual(response.status, TemporalParsingStatus.SUCCEEDED)
         self.assertEqual(response.result, "2023-03-03 11:00")
 
+    def test_specific_date_abundant_info(self):
+        request = TemporalParsingRequest(
+            today="2023-03-12", utterance="Tuesday March 14th 3pm"
+        )
+        response = __class__._service.Parse(request, None)
+        self.assertEqual(response.status, TemporalParsingStatus.SUCCEEDED)
+        self.assertEqual(response.result, "2023-03-14 15:00")
+
     def test_specific_date_abbr_month(self):
         request = TemporalParsingRequest(
             today="2023-02-24", utterance="On Mar 3rd at 11 am"
