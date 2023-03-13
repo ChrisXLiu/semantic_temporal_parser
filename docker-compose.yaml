@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    environment:
+      TEMPORAL_PARSING_HOST: server
+    image: client
+    networks:
+      - microservices
+    ports:
+      - 10086:5000
+
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: temporal_parsing
+    networks:
+      - microservices
+    ports:
+      - 50051:50051
+
+networks:
+  microservices:
